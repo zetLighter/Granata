@@ -1,0 +1,49 @@
+# ===== Maven =====
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# ===== Spring Boot =====
+*.log
+logs/
+spring.log
+
+# ===== Environment =====
+.env
+.env.local
+.env.*.local
+
+# ===== IDE =====
+.idea/
+*.iws
+*.iml
+*.ipr
+
+.vscode/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Java =====
+*.class
+*.jar
+*.war
+*.ear
+
+# ===== Tests =====
+surefire-reports/
+failsafe-reports/
+
+# ===== Lombok =====
+.lombok/
+
+# ===== Misc =====
+*.orig
+*.swp
