@@ -19,7 +19,11 @@ export const Auth = () => {
                 headers: {'Content-Type': 'application/json'}
             })
             .catch(error => {
-                setErrorMessage(error.response.data.message)
+                if(error.response != undefined) {
+                    setErrorMessage(error.response.data.message)
+                } else {
+                    setErrorMessage('Ошибка запроса')
+                }
                 console.log(error)
             })
 
@@ -47,7 +51,11 @@ export const Auth = () => {
                     email: email
                 }, {headers: {'Content-Type': 'application/json'}}
             ).catch(error => {
-                setErrorMessage(error.response.data.message)
+                if(error.response != undefined) {
+                    setErrorMessage(error.response.data.message)
+                } else {
+                    setErrorMessage('Ошибка запроса')
+                }
                 console.log(error)
             })
 
