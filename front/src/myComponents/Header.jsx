@@ -13,7 +13,7 @@ export const Header = () => {
     useEffect(() => {
         const isValid = async () => {
             if(window.localStorage.getItem('token') != null) {
-                const response = await axios.get('http://localhost:4932/valid', 
+                const response = await axios.get('/back/valid', 
                     {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}})
                 .catch(error => {
                     console.log(error)

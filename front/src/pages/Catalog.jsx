@@ -9,7 +9,7 @@ export const Catalog = () => {
 
         const isValid = async () => {
             if(window.localStorage.getItem('token') != null) {
-                const response = await axios.get('http://localhost:4932/valid', 
+                const response = await axios.get('/back/valid', 
                     {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}})
                 .catch(error => {
                     console.log(error)
@@ -23,7 +23,7 @@ export const Catalog = () => {
         }
 
         const getProducts = async () => {
-            await axios.get('http://localhost:4932/api/dishes')
+            await axios.get('/back/api/dishes')
                 .then(response => setProducts(response.data))
                 .catch(error => console.log(error))
         }
@@ -32,7 +32,7 @@ export const Catalog = () => {
     }, [])
 
     const handleToOrder = async (productId) => {
-        await axios.post('http://localhost:4932/api/order', {
+        await axios.post('/back/api/order', {
                 dishId: productId,
                 quantity: 1
             }, {
