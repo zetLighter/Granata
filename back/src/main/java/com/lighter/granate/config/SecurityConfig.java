@@ -33,10 +33,12 @@ public class SecurityConfig {
 
     private final UsersService usersService;
     private final JwtRequestFilter jwtRequestFilter;
+    private final PasswordEncoder passwordEncoder;
 
-    public SecurityConfig(UsersService usersService, JwtRequestFilter jwtRequestFilter) {
+    public SecurityConfig(UsersService usersService, JwtRequestFilter jwtRequestFilter, PasswordEncoder passwordEncoder) {
         this.usersService = usersService;
         this.jwtRequestFilter = jwtRequestFilter;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Bean
@@ -134,13 +136,8 @@ public class SecurityConfig {
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider(usersService);
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         return daoAuthenticationProvider;
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     @Bean
