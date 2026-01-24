@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import com.lighter.granate.entity.Role;
 import com.lighter.granate.repository.RoleRepository;
 
-import lombok.RequiredArgsConstructor;
 
 @Component
 public class DataInitializer implements CommandLineRunner {

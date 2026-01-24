@@ -16,10 +16,7 @@ export const Auth = () => {
                 username: username,
                 password: password
             },
-	    {withCredentials: true},	
-            {
-                headers: {'Content-Type': 'application/json'}
-            })
+	    {withCredentials: true})
             .catch(error => {
                 if(error.response != undefined) {
                     setErrorMessage(error.response.data.message)
@@ -51,7 +48,8 @@ export const Auth = () => {
                     password: password,
                     confirmPassword: confirmPassword,
                     email: email
-                }, {headers: {'Content-Type': 'application/json'}}
+                },
+            {withCredentials: true}
             ).catch(error => {
                 if(error.response != undefined) {
                     setErrorMessage(error.response.data.message)
