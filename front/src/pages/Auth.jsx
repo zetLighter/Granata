@@ -12,6 +12,7 @@ export const Auth = () => {
     const [errorMessage, setErrorMessage] = useState('Ошибка') 
 
     const handleLogin = async () => {
+        // const response = await axios.post('http://localhost:4932/auth/login', {
         const response = await axios.post('/back/auth/login', {
                 username: username,
                 password: password
@@ -31,7 +32,7 @@ export const Auth = () => {
                 setPassword('')
 
                 setIsError(false)
-
+                
                 window.localStorage.setItem('token', response.data.token)
                 window.location.href = '/'
             } else {
@@ -43,6 +44,7 @@ export const Auth = () => {
             setIsError(true)
             setErrorMessage('Неккоректные данные')
         } else {
+            // const response = await axios.post('http://localhost:4932/auth/registration', {
             const response = await axios.post('/back/auth/registration', {
                     username: username,
                     password: password,

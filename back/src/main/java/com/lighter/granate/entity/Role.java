@@ -54,7 +54,7 @@ public class Role {
     }
 
     public String toString() {
-        return "Role(id=" + this.getId() + ", title=" + this.getTitle() + ", users=" + this.getUsers() + ")";
+        return "Role(id=" + this.getId() + ", title=" + this.getTitle() + ", users=" + ")";
     }
 
     public static class RoleBuilder {

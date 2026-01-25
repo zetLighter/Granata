@@ -92,7 +92,7 @@ public class User {
     }
 
     public String toString() {
-        return "User(id=" + this.getId() + ", username=" + this.getUsername() + ", email=" + this.getEmail() + ", password=" + this.getPassword() + ", roles=" + this.getRoles() + ", orders=" + this.getOrders() + ")";
+        return "User(id=" + this.getId() + ", username=" + this.getUsername() + ", email=" + this.getEmail() + ", password=" + this.getPassword() + ")";
     }
 
     public static class UserBuilder {

@@ -10,12 +10,14 @@ export const Orders = () => {
         
         const getOrders = async () => {
             try {
+                // const reqOrders = await axios.get('http://localhost:4932/api/orders', {
                 const reqOrders = await axios.get('/back/api/orders', {
                     headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}
                 }).then(response => response.data)
                 .catch(error => console.log(error))
 
                 const promises = reqOrders.map(async (order) => {
+                    // await axios.get(`http://localhost:4932/api/product?id=${order.dishId}`, {
                     await axios.get(`/back/api/product?id=${order.dishId}`, {
                         headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}
                     }).then(response => {
@@ -31,7 +33,7 @@ export const Orders = () => {
 
                 setOrders(upOrders)
             } catch(error) {
-                window.location.replace('http://localhost:3000/')
+                window.location.href = '/'
             }
         }
 
@@ -39,6 +41,7 @@ export const Orders = () => {
     }, [reload]) 
 
     const handleRemove = async (id) => {
+        // await axios.delete(`http://localhost:4932/api/order?dishId=${id}`, {
         await axios.delete(`/back/api/order?dishId=${id}`, {
             headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}
         })

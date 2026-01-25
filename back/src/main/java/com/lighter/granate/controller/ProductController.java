@@ -27,7 +27,7 @@ public class ProductController {
         return dishRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found."));
     }
     //Authorized
-    @PostMapping("/product")
+    @PostMapping("/admin/product")
     public void addProduct(@RequestBody CreateDishDTO dto) {
         Dish dish = Dish.builder()
                 .title(dto.getTitle())

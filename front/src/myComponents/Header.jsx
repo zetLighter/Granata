@@ -7,21 +7,35 @@ const activeStyle = {
     color: 'gray'
 }
 
-export const Header = () => {
+export const Header = ({openModal}) => {
     const [isAuth, setIsAuth] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false); 
 
     useEffect(() => {
         const isValid = async () => {
             if(window.localStorage.getItem('token') != null) {
-                const response = await axios.get('/back/valid', 
-                    {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}})
-                .catch(error => {
-                    console.log(error)
-                    setIsAuth(false)})
-                if(response) {
-                    setIsAuth(response.data)
+                // const admResponse = await axios.get('http://localhost:4932/admin',
+                const admResponse = await axios.get('/back/admin',
+                    {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}}
+                ).catch(error => {
+                    setIsAdmin(false)})
+                if(admResponse) {
+                    setIsAdmin(admResponse.data)
+                    setIsAuth(admResponse.data)
+                } else {
+                    // const authResponse = await axios.get('http://localhost:4932/valid',
+                    const authResponse = await axios.get('/back/valid',
+                        {headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}}
+                    ).catch(error => {
+                        console.log(error)
+                        setIsAuth(false)
+                    })
+                    if(authResponse) {
+                        setIsAuth(authResponse.data)
+                    }
                 }
             } else {
+                setIsAdmin(false)
                 setIsAuth(false)
             }
         }
@@ -41,7 +55,8 @@ export const Header = () => {
                 <p className='logo-title'>ГРАНАТА</p>
             </NavLink>
             { isAuth
-              ?  <div className='header-menu'> 
+              ?  <div className='header-menu'>
+                        {isAdmin && <p onClick={openModal} className="header-ref">Добавить</p>}
                         <NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/orders" className='header-ref'>Заказы</NavLink>
                         <p onClick={exitHandle} className='header-ref'>Выйти</p>
                 </div>

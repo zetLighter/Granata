@@ -30,4 +30,8 @@ public class AuthController {
     public ResponseEntity<?> isValid() {
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
+
+    @GetMapping("/admin")
+    public ResponseEntity<?> isAdmin() { return new ResponseEntity<>(true, HttpStatus.OK); }
+
 }

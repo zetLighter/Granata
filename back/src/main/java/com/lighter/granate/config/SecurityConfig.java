@@ -54,10 +54,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Публичные эндпоинты
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/api/dishes").permitAll()
+                        .requestMatchers("/api/products").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
 
                         // Админские эндпоинты
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
 
                         // Все остальные запросы требуют аутентификации

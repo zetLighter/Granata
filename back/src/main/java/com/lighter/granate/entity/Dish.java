@@ -77,7 +77,7 @@ public class Dish {
     }
 
     public String toString() {
-        return "Dish(id=" + this.getId() + ", title=" + this.getTitle() + ", price=" + this.getPrice() + ", img=" + this.getImg() + ", cartItems=" + this.getOrders() + ")";
+        return "Dish(id=" + this.getId() + ", title=" + this.getTitle() + ", price=" + this.getPrice() + ", img=" + this.getImg() + ")";
     }
 
     public static class DishBuilder {
