@@ -31,7 +31,7 @@ export const Orders = () => {
                 })
                 const upOrders = await Promise.all(promises)
 
-                setOrders(upOrders)
+                setOrders(upOrders.reverse())
             } catch(error) {
                 window.location.href = '/'
             }
@@ -52,7 +52,7 @@ export const Orders = () => {
         <div className="catalog-wrap">
             <h2 className="orders-title">Отслеживание</h2>
             <div className="order-container">
-                {orders.reverse().map(order => (
+                {orders.map(order => (
                      <div key={order.id} className="order-card">
                         <img className="order-img" src={order.img}/>
                         <div className="product-info">
@@ -64,7 +64,10 @@ export const Orders = () => {
                             <p className="order-place">Адрес: {order.place}</p>
                             <p className="order-quantity">Количество: {order.quantity}</p>
                         </div>
-                        <button onClick={() => handleRemove(order.dishId)} className="remove-order-button">Отменить</button>
+                        { order.status === 'Доставлен'
+                            ?<button onClick={() => handleRemove(order.dishId)} className="order-btn complete">Завершить</button>
+                            :<button onClick={() => handleRemove(order.dishId)} className="order-btn remove">Отменить</button>
+                        }
                     </div>
                 ))}
             </div>

@@ -1,23 +1,23 @@
 import React from 'react'
 import {useState} from 'react';
 import {Header} from './Header.jsx'
-import {Modal} from './Modal.jsx'
+import {AdditionModal} from './AdditionModal.jsx'
 
 export const Layout = ({children}) => {
-    const [isModal, setIsModal] = useState(false);
+    const [isAddModal, setIsAddModal] = useState(false);
 
-    const openModal = () => {
-        setIsModal(true)
+    const openAddModal = () => {
+        setIsAddModal(true)
     }
     const closeModal = () => {
-        setIsModal(false)
+        setIsAddModal(false)
     }
 
     return <React.Fragment>
         <div className='container'>
-            <Header openModal={openModal} />
+            <Header openAddModal={openAddModal} />
             {children}
-            {isModal && <Modal closeModal={closeModal}/>}
+            {isAddModal && <AdditionModal closeModal={closeModal}/>}
         </div>
     </React.Fragment>
 }

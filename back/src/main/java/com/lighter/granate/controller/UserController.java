@@ -34,12 +34,12 @@ public class UserController {
     public List<User> getUsers() {
         return userService.readUsers();
     }
-    @GetMapping("/user")
+    @GetMapping("/admin/user")
     public User getUser(@RequestParam int id) {
         return userService.readUser(id);
     }
     @DeleteMapping("/admin/user")
-    public void removeUser(HttpServletRequest request, @RequestParam int id) {
+    public void removeUser(@RequestParam int id) {
         userService.deleteUser(id);
     }
     @PutMapping("/admin/user")

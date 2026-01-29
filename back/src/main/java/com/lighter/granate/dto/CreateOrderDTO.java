@@ -8,6 +8,7 @@ import lombok.Setter;
 public class CreateOrderDTO {
     private int dishId;
     private int quantity;
+    private String place;
 
 
     public int getDishId() {
@@ -16,5 +17,9 @@ public class CreateOrderDTO {
 
     public int getQuantity() {
         return this.quantity;
+    }
+
+    public String getPlace() {
+        return this.place;
     }
 }

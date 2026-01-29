@@ -7,7 +7,7 @@ const activeStyle = {
     color: 'gray'
 }
 
-export const Header = ({openModal}) => {
+export const Header = ({openAddModal}) => {
     const [isAuth, setIsAuth] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false); 
 
@@ -56,7 +56,8 @@ export const Header = ({openModal}) => {
             </NavLink>
             { isAuth
               ?  <div className='header-menu'>
-                        {isAdmin && <p onClick={openModal} className="header-ref">Добавить</p>}
+                        {isAdmin && <p onClick={openAddModal} className="header-ref">Добавить</p>}
+                        {isAdmin && <NavLink style={({isActive}) => isActive ? activeStyle : undefined} to='/panel' className='header-ref'>Панель</NavLink>}
                         <NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/orders" className='header-ref'>Заказы</NavLink>
                         <p onClick={exitHandle} className='header-ref'>Выйти</p>
                 </div>

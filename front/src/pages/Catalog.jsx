@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-export const Catalog = () => {
+export const Catalog = ({openOrderModal}) => {
     const [products, setProducts] = useState([])
     const [isAuth, setIsAuth] = useState(false)
 
@@ -33,17 +33,6 @@ export const Catalog = () => {
         getProducts()
     }, [])
 
-    const handleToOrder = async (productId) => {
-        // await axios.post('http://localhost:4932/api/order', {
-        await axios.post('/back/api/order', {
-                dishId: productId,
-                quantity: 1
-            }, {
-                headers: {Authorization: `Bearer ${window.localStorage.getItem('token')}`}
-            })
-            .catch(error => console.log(error))
-    }
-
     return (
         <div className="catalog-wrap">
             <h2 className="orders-title">Каталог</h2>
@@ -55,7 +44,7 @@ export const Catalog = () => {
                             <p className="card-title">{product.title}</p>
                             <p className="card-price">{product.price} Руб.</p>
                         </div>
-                        {isAuth && <button onClick={() => {handleToOrder(product.id)}} className='order-button'>Заказать</button>}
+                        {isAuth && <button onClick={() => {openOrderModal(product.id)}} className='order-button'>Заказать</button>}
                     </div>
                 ))}
             </div>

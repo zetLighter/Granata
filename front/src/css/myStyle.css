@@ -194,11 +194,22 @@ body {
     padding: 6vh 1vw 6vh 1vw;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
 }
+.order-panel-container {
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+    gap: 5vw;
+    min-height: 67vh;
+    min-width: 82vw;
+    margin: 3vh 6vw 3vh 6vw;
+    padding: 6vh 1vw 6vh 1vw;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
 .order-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 5vh;
+    gap: 2vw;
     min-height: 26vh;
     width: 75vw;
     padding: 14px;
@@ -209,8 +220,28 @@ body {
 .order-card:hover {
     scale: 1.01;
 }
+.order-panel-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2vw;
+    min-height: 26vh;
+    width: 75vw;
+    padding: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+    font-size: 17px;
+    transition: all 0.25s ease;
+}
+.order-panel-card:hover {
+    scale: 1.01;
+}
+.order-desc {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
 .order-img {
-    height: 26vh;
+    height: 190px;
 }
 .product-info {
     display: flex;
@@ -218,6 +249,7 @@ body {
     justify-content: center;
     gap: 3vh;
     height: 100%;
+    text-align: center;
 }
 .order-info {
     display: flex;
@@ -225,8 +257,16 @@ body {
     justify-content: center;
     gap: 2vh;
     height: 100%;
+    /* margin-bottom: 4px; */
+    text-align: center;
 }
-.remove-order-button {
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vh;
+    text-align: center;
+}
+.order-btn {
     padding: 6px 4px 6px 4px;
     font-size: 16px;
     border-radius: 8px;
@@ -235,14 +275,21 @@ body {
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.26);;
 }
-.remove-order-button:hover {
+.order-btn.complete:hover {
+    cursor: pointer;
+    scale: 1.025;
+    background-color: lightblue;
+}
+.order-btn.remove:hover {
     cursor: pointer;
     scale: 1.025;
     background-color: lightcoral;
 }
-.remove-order-button:active {
+.order-btn:active {
     background-color: lightgreen;
 }
+
+
 
 .modal-wrap {
     display: flex;
@@ -307,7 +354,76 @@ body {
     color: red;
 }
 
-@media(max-width: 760px) {
+.change-status-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.order-status-title {
+    margin-bottom: 10px;
+}
+.status-select {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.38);
+    font-size: 16px;
+    margin-bottom: 14px;
+    outline: none;
+    text-align: center;
+    padding: 4px 0 4px 0;
+    border-radius: 4px;
+}
+.status-select:hover {
+    cursor: pointer;
+}
+.change-status-button {
+    background-color: white;
+    border-radius: 7px;
+    padding: 4px 0 4px 0;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.38);
+}
+.change-status-button:hover {
+    cursor: pointer;
+    background-color: lightblue;
+    scale: 1.025;
+}
+.change-status-button:active {
+    background-color: lightgreen;
+}
+
+@media(max-width: 580px) {
+    .header {
+        height: 48px;
+    }
+    .header-ref {
+        font-size: 14px;
+    }
+    .logo-img {
+        height: 38px;
+    }
+    .logo-title {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 1005px) {
+    .order-panel-container {
+        box-shadow: none;
+        padding: 2vh 4vw 2vh 4vw;
+        margin: 0vh 6vw 3vh 6vw;
+    }
+    .order-panel-card {
+        flex-direction: column;
+        width: 60vw;
+        gap: 2vh;
+    }   
+    .order-desc {
+        flex-direction: column;
+        gap: 26px;
+    }
+}
+
+@media(max-width: 650px) {
     .card-container {
         padding: 2vh 4vw 2vh 4vw;
         margin: 0vh 6vw 3vh 6vw;
@@ -319,7 +435,6 @@ body {
     .card-img {
         min-width: 34vw;
     }
-
     .orders-title {
         margin: 3vh 0 2vh 0;
     }

@@ -1,6 +1,7 @@
 package com.lighter.granate.controller;
 
 import com.lighter.granate.dto.CreateOrderDTO;
+import com.lighter.granate.dto.UpdateOrderStatusDto;
 import com.lighter.granate.entity.Order;
 import com.lighter.granate.entity.Dish;
 import com.lighter.granate.entity.User;
@@ -57,8 +58,8 @@ public class OrderController {
                     .dish(dish)
                     .dishId(dish.getId())
                     .quantity(dto.getQuantity())
-                    .status("В обработке")
-                    .place("г. Ростов-на-Дону, ул. Мечникова, 79")
+                    .status("Обрабатывается")
+                    .place(dto.getPlace())
                     .time(DateTimeFormatter.ofPattern("HH:mm:ss")
                             .format((new Date()).toInstant()
                                     .atZone(ZoneId.systemDefault())))
@@ -71,6 +72,23 @@ public class OrderController {
     public List<Order> getOrdersByUser() {
         User user = usersService.getUserFromToken();
         return orderRepository.findByUser(user).get();
+    }
+
+    @GetMapping("/admin/orders")
+    public List<Order> getOrders() {
+        return orderRepository.findAll();
+    }
+
+    @PutMapping("/admin/order")
+    public String updateStatus(@RequestBody UpdateOrderStatusDto dto) {
+        Optional<Order> orderOpt = orderRepository.findById(dto.getId());
+        if(orderOpt.isPresent()) {
+            Order order = orderOpt.get();
+            order.setStatus(dto.getStatus());
+            orderRepository.save(order);
+            return order.getStatus();
+        }
+        return null;
     }
 
     @DeleteMapping("/order")

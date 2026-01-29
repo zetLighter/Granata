@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import axios from 'axios'
 
 
-export const Modal = ({closeModal}) => {
+export const AdditionModal = ({closeModal}) => {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
     const [img, setImg] = useState('')
@@ -32,11 +32,6 @@ export const Modal = ({closeModal}) => {
             }
         )
         .catch(error => {
-            // if(error.response != undefined) {
-            //     setErrorMessage(error.response.data.message)
-            // } else {
-            //     setErrorMessage('Ошибка запроса')
-            // }
             console.log(error)
         })
     }
